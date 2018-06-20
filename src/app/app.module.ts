@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { FacturasModule } from './facturas/facturas.module';
 
 import { AppComponent } from './app.component';
 import { ProveedoresService } from './servicios/proveedores.service';
@@ -20,6 +21,7 @@ import { PresupuestosComponent } from './presupuestos/presupuestos/presupuestos.
 import { EditpresComponent } from './presupuestos/editpres/editpres.component';
 import { RegistroComponent } from './autenticacion/registro/registro.component';
 import { InisesComponent } from './autenticacion/inises/inises.component';
+import { AddfraComponent } from './facturas/facturas/addfra/addfra.component';
 
 //La ruta default '**' siempre al final
 const routes: Routes = [
@@ -31,6 +33,7 @@ const routes: Routes = [
   { path: 'editpres/:id', component: EditpresComponent, canActivate: [GuardService] },
   { path: 'registro', component: RegistroComponent },
   { path: 'inises', component: InisesComponent },
+  { path: 'addfra', component: AddfraComponent },
   { path: '**', component: InicioComponent }
 ];
 
@@ -52,7 +55,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes),//Estableciendo un array de rutas que empleará nuestra página
     FormsModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    FacturasModule
   ],
   providers: [
     ProveedoresService,

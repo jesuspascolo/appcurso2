@@ -54,4 +54,11 @@ export class PresupuestosService {
       .pipe(map(respuesta => respuesta.json()));
   }
 
+  getPresupuestosSearch(busqueda: string) {
+    const url = `${this.presURL}?orderBy="proveedor"&startAt="${busqueda}"&endAt="${busqueda}\uf8ff"`;
+    return this.http.get(url)
+      .pipe(map (res => res.json()));
+  }
+
+
 }

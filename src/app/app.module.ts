@@ -4,6 +4,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { AngularFireModule} from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { enviroment } from './config/firebase.config';
 import { FacturasModule } from './facturas/facturas.module';
 
 import { AppComponent } from './app.component';
@@ -22,9 +26,6 @@ import { PresupuestosComponent } from './presupuestos/presupuestos/presupuestos.
 import { EditpresComponent } from './presupuestos/editpres/editpres.component';
 import { RegistroComponent } from './autenticacion/registro/registro.component';
 import { InisesComponent } from './autenticacion/inises/inises.component';
-import { AddfraComponent } from './facturas/facturas/addfra/addfra.component';
-import { EditfraComponent } from './facturas/facturas/editfra/editfra.component';
-import { FacturasComponent } from './facturas/facturas/facturas/facturas.component';
 
 //La ruta default '**' siempre al final
 const routes: Routes = [
@@ -36,9 +37,6 @@ const routes: Routes = [
   { path: 'addpres', component: AddpresComponent, canActivate: [GuardService] },
   { path: 'presupuestos', component: PresupuestosComponent, canActivate: [GuardService] },
   { path: 'editpres/:id', component: EditpresComponent, canActivate: [GuardService] },
-  { path: 'addfra', component: AddfraComponent, canActivate: [GuardService] },
-  { path: 'editfra', component: EditfraComponent, canActivate: [GuardService] },
-  { path: 'facturas', component: FacturasComponent, canActivate: [GuardService] },
   { path: '**', component: InicioComponent }
 ];
 
@@ -53,10 +51,7 @@ const routes: Routes = [
     PresupuestosComponent,
     EditpresComponent,
     RegistroComponent,
-    InisesComponent,
-    AddfraComponent,
-    EditfraComponent,
-    FacturasComponent
+    InisesComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +59,10 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    FacturasModule
+    FacturasModule,
+    AngularFireModule.initializeApp(enviroment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   providers: [
     ProveedoresService,

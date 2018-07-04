@@ -16,7 +16,9 @@ export class ProveedoresComponent implements OnInit {
   resultados = false;
   noresultados = false;
 
-  constructor(private proveedoresService: ProveedoresService) { }
+  constructor(private proveedoresService: ProveedoresService) {
+    this.obtenerProveedores();
+  }
 
   ngOnInit() {
     this.campoBusqueda = new FormControl();
@@ -47,7 +49,20 @@ export class ProveedoresComponent implements OnInit {
           this.resultados = false;
         }
       });
-    this.proveedores = this.proveedoresService.getProveedores();
+    }
+
+  obtenerProveedores() {
+    this.proveedoresService.getProveedores()
+      .subscribe(proveedores => {
+        for (const id$ in proveedores) {
+          const p = proveedores[id$];
+          p.id$ = id$;
+          this.proveedores.push(proveedores[id$]);
+        }
+        this.cargando = false;
+      });
   }
+}
+
 
 }

@@ -14,7 +14,7 @@ export class FacturasService {
 
   postFacturas(factura: any)
   {
-    const newpres ) JSON.stringify(factura);
+    const newpres = JSON.stringify(factura);
     const headers = new Headers({
       'Content-Type': 'application/json'
     });

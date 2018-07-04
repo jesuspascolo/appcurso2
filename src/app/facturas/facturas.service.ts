@@ -5,38 +5,42 @@ import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class PresupuestosService {
+export class FacturasService {
 
-  presURL = 'https://comprasapp-b26a3.firebaseio.com/presupuestos.json';
-  preURL = 'https://comprasapp-b26a3.firebaseio.com/presupuestos';
+  presURL = 'https://comprasapp-b26a3.firebaseio.com/facturas.json';
+  preURL = 'https://comprasapp-b26a3.firebaseio.com/facturas';
 
   constructor(private http: Http) { }
 
-  postPresupuesto(presupuesto: any) {
-    const newpres = JSON.stringify(presupuesto);
+  postFacturas(factura: any)
+  {
+    const newpres ) JSON.stringify(factura);
     const headers = new Headers({
       'Content-Type': 'application/json'
     });
+
     return this.http.post(this.presURL, newpres, {headers})
-      .pipe(map(respuestaServidor => {
-        console.log(respuestaServidor.json());
-        return respuestaServidor.json();
+      .pipe(map(respuesta => {
+        console.log(respuesta.json());
+        return respuesta.json();
       }));
   }
 
-  getPresupuestos() {
-    return this.http.get(this.presURL)
-      .pipe(map(respuestaServidor => respuestaServidor.json()));
+  getFacturas()
+  {
+    return this.http.get(this.preURL)
+      .pipe(map(respuesta => respuesta.json()));
   }
 
-  getPresupuesto(id$: string) {
+  getFactura(id$: string)
+  {
     const url = `${this.preURL}/${id$}.json`;
     return this.http.get(url)
       .pipe(map(respuesta => respuesta.json()));
   }
 
-  putPresupuesto(presupuesto: any, id$: string) {
-    const newpre = JSON.stringify(presupuesto);
+  putFactura(factura: any, id$: string) {
+    const newpre = JSON.stringify(factura);
     const headers = new Headers({
       'Content-Type': 'application/json'
     });
@@ -48,7 +52,7 @@ export class PresupuestosService {
       }));
   }
 
-  delPresupuesto(id$: string) {
+  delFactura(id$: string) {
     const url = `${this.preURL}/${id$}.json`;
     return this.http.delete(url)
       .pipe(map(respuesta => respuesta.json()));

@@ -11,6 +11,7 @@ import { ProveedoresService } from './servicios/proveedores.service';
 import { PresupuestosService } from './servicios/presupuestos.service';
 import { AutenticacionService } from './servicios/autenticacion.service';
 import { GuardService } from './servicios/guard.service';
+import { FacturasService } from './facturas/facturas.service';
 
 import { ProveedoresComponent } from './proveedores/proveedores/proveedores.component';
 import { InicioComponent } from './inicio/inicio.component';
@@ -22,18 +23,22 @@ import { EditpresComponent } from './presupuestos/editpres/editpres.component';
 import { RegistroComponent } from './autenticacion/registro/registro.component';
 import { InisesComponent } from './autenticacion/inises/inises.component';
 import { AddfraComponent } from './facturas/facturas/addfra/addfra.component';
+import { EditfraComponent } from './facturas/facturas/editfra/editfra.component';
+import { FacturasComponent } from './facturas/facturas/facturas/facturas.component';
 
 //La ruta default '**' siempre al final
 const routes: Routes = [
   { path: '', component: InicioComponent },
+  { path: 'registro', component: RegistroComponent },
+  { path: 'inises', component: InisesComponent },
   { path: 'proveedores', component: ProveedoresComponent, canActivate: [GuardService] },
   { path: 'addprovee', component: AddproveeComponent, canActivate: [GuardService] },
   { path: 'addpres', component: AddpresComponent, canActivate: [GuardService] },
   { path: 'presupuestos', component: PresupuestosComponent, canActivate: [GuardService] },
   { path: 'editpres/:id', component: EditpresComponent, canActivate: [GuardService] },
-  { path: 'registro', component: RegistroComponent },
-  { path: 'inises', component: InisesComponent },
-  { path: 'addfra', component: AddfraComponent },
+  { path: 'addfra', component: AddfraComponent, canActivate: [GuardService] },
+  { path: 'editfra', component: EditfraComponent, canActivate: [GuardService] },
+  { path: 'facturas', component: FacturasComponent, canActivate: [GuardService] },
   { path: '**', component: InicioComponent }
 ];
 
@@ -48,7 +53,10 @@ const routes: Routes = [
     PresupuestosComponent,
     EditpresComponent,
     RegistroComponent,
-    InisesComponent
+    InisesComponent,
+    AddfraComponent,
+    EditfraComponent,
+    FacturasComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +70,8 @@ const routes: Routes = [
     ProveedoresService,
     PresupuestosService,
     AutenticacionService,
-    GuardService
+    GuardService,
+    FacturasService
   ],
   bootstrap: [AppComponent]
 })

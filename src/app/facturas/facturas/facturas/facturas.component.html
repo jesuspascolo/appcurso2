@@ -1,0 +1,29 @@
+<div class="row">
+  <h3 style="margin-right: 40px; margin-left: 15px;">Lista de Facturas</h3>
+  <a class="btn btn-primary float-md-right" routerLink="/addfra">Añadir nueva factura</a>
+</div>
+<hr>
+<table class="table table-bordered table-striped">
+  <thead>
+  <tr class="filters">
+    <th>Cliente</th>
+    <th>Fecha</th>
+    <th>Concepto</th>
+    <th>Cantidad</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let factura of facturas">
+    <td>{{factura.cliente}}</td>
+    <td>{{factura.fecha}}</td>
+    <td>{{factura.concepto}}</td>
+    <td>{{factura.cantidad}}</td>
+    <td>
+      <button type="button" class="btn btn-success" routerLink="/editpres/{{presupuesto.id$}}">Editar</button>
+    </td>
+    <td>
+      <button type="button" class="btn btn-danger" (click)="eliminarPresupuesto(presupuesto.id$)">Eliminar</button>
+    </td>
+  </tr>
+  </tbody>
+</table>

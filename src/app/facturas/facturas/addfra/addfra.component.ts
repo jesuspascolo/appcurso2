@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-addfra',
@@ -6,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./addfra.component.css']
 })
 export class AddfraComponent implements OnInit {
+
+  facturaForm: FormGroup;
+  factura: any;
+  concepto: any;
 
   constructor() { }
 

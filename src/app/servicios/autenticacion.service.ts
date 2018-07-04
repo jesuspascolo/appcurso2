@@ -14,7 +14,7 @@ export class AutenticacionService {
     firebase.auth().createUserWithEmailAndPassword(userdata.email, userdata.password)
       .catch(error => {
         console.log(error);
-      })
+      });
   }
 
   inicioSesion(userdata) {

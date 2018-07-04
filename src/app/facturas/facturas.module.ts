@@ -7,6 +7,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AddfraComponent } from './facturas/addfra/addfra.component';
+import { EditfraComponent } from './editfra/editfra.component';
+import { FacturasComponent } from './facturas/facturas/facturas.component';
 
 @NgModule({
   imports: [
@@ -15,8 +17,9 @@ import { AddfraComponent } from './facturas/addfra/addfra.component';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    RouterModule
   ],
-  declarations: [AddfraComponent],
-  providers: []
+  declarations: [AddfraComponent, EditfraComponent, FacturasComponent],
+  providers: [],
 })
 export class FacturasModule { }

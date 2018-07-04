@@ -10,13 +10,6 @@ export class PresupuestosComponent implements OnInit {
   presupuestos: any[] = [];
 
   constructor(private presupuestosService: PresupuestosService) {
-    /*this.presupuestosService.getPresupuestos().subscribe(presupuestos => {
-      for (const id$ in presupuestos) {
-        const p = presupuestos[id$];
-        p.id$ = id$;
-        this.presupuestos.push(presupuestos[id$]);
-      }
-    });*/
     this.obtenerPresupuestos();
   }
 
@@ -25,13 +18,6 @@ export class PresupuestosComponent implements OnInit {
   eliminarPresupuesto(id$) {
     this.presupuestosService.delPresupuesto(id$).subscribe(respuesta => {
       this.presupuestos = [];
-      /*this.presupuestosService.getPresupuestos().subscribe(presupuestos => {
-        for (const id$ in presupuestos) {
-          const p = presupuestos[id$];
-          p.id$ = id$;
-          this.presupuestos.push(presupuestos[id$]);
-        }
-      });*/
       this.obtenerPresupuestos();
       console.log(respuesta);
     });
